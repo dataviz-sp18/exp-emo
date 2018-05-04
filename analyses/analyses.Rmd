@@ -330,7 +330,7 @@ fisher.test(homicide.df)
 ```
 
 ```{r percentages}
-print(unname(pizza.df[1,] / (pizza.df[1,] + pizza.df[2,])))
-print(unname(rain.df[1,] / (rain.df[1,] + rain.df[2,])))
-print(unname(homicide.df[1,] / (homicide.df[1,] + homicide.df[2,])))
+unname(pizza.df[1,] / (pizza.df[1,] + pizza.df[2,]))
+unname(rain.df[1,] / (rain.df[1,] + rain.df[2,]))
+unname(homicide.df[1,] / (homicide.df[1,] + homicide.df[2,]))
 ```
