@@ -24,6 +24,9 @@ Before showing the participant a map we gave them the following prompt, or one v
 
 > When you are ready to see the map please click ready
 
+The three possible subjects are: rainfall, pizza consumption and homicide rate. The first two we consider to be emotionally neutral, with the ultimate being emotional and something most people would be informed about. The penultimate we do not assume people are informed about, while the antepenultimate they likely have non-emotional assumptions about.
+
+
 Each map has two states labeled (choose to have similar size visual) and the participant was given 5 seconds to view the image (loading time of the image likely made the functional viewing time 4 seconds, but it was not measured). The images do not say which condition they are for, but the ranges given by the legends limit the possible datasets, so the green map was always used for Homicide, the red for pizza and the blue for rainfall.
 
 Then the participants were asked, or something similar:
@@ -65,3 +68,21 @@ After analysis, we found that the order of questioning was the most significant 
 ![Pizza results in position 1](../imgs/pizza_ret1.png)
 ![Pizza results in position 3](../imgs/pizza_ret2.png)
 ![Pizza results in position 3](../imgs/pizza_ret3.png)
+
+The same result holds for all other maps (see `analysis/analysis.Rmd` for all plots) Or the table below giving the fraction of wrong answers across results.
+
+Subject |First | Second | Third
+---|---|---|---
+Pizza |0.275 |0.025 |0.023
+Rain |0.3 |0.095 |0.05
+Homicide|0.309| 0.125| 0.05
+
+To check our original hypothesis a Fisher's Exact Test was performed across all three time intervals for each question, giving:
+
+Subject |p-value
+---|---
+Pizza | 0.0002174
+Rain |0.005158
+Homicide|0.005765
+
+Which suggests they are being drawn from the same distribution, but they are likely all coming from the same distribution as people are too accurate to determine the effect.
