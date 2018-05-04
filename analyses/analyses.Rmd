@@ -304,3 +304,23 @@ results <- cbind(results,as.data.frame(as.matrix(summary(rph$homicide.3.right))[
 names(results) <- c('pizza.1','homicide.2','rain.3','homicide.1','rain.2','pizza.3','rain.1','pizza.2','homicide.3')
 #Names are correct, but there are column headers with clumsy descriptions that I can't seem to get rid of
 ```
+
+
+```{r transform_type}
+idx <- sapply(results, is.factor)
+results[idx] <- lapply(results[idx], function(x) as.numeric(as.character(x)))
+```
+
+```{r make_sub_dfs}
+pizza.df <- cbind.data.frame(results$pizza.1,results$pizza.2,results$pizza.3)
+rain.df <- cbind.data.frame(results$rain.1,results$rain.2,results$rain.3)
+homicide.df <- cbind.data.frame(results$homicide.1,results$homicide.2,results$homicide.3)
+```
+
+
+
+```{r fisher_test}
+fisher.test(pizza.df)
+fisher.test(rain.df)
+fisher.test(homicide.df)
+```
