@@ -287,6 +287,20 @@ ggplot(rph) + geom_bar(aes(x=factor(homicide.3.right),y= (..count..)/sum(..count
 
 
 ```{r compile_results}
+results <- as.data.frame(as.matrix(summary(phr$pizza.1.right))[2:3, ])
+names(results) <- 'pizza.1'
 
+results <- cbind(results,as.data.frame(as.matrix(summary(phr$homicide.2.right))[2:3, ])[, 1])
+results <- cbind(results,as.data.frame(as.matrix(summary(phr$rain.3.right))[2:3, ])[, 1])
 
+results <- cbind(results,as.data.frame(as.matrix(summary(hrp$homicide.1.right))[2:3, ])[, 1])
+results <- cbind(results,as.data.frame(as.matrix(summary(hrp$rain.2.right))[2:3, ])[, 1])
+results <- cbind(results,as.data.frame(as.matrix(summary(hrp$pizza.3.right))[2:3, ])[, 1])
+
+results <- cbind(results,as.data.frame(as.matrix(summary(rph$rain.1.right))[2:3, ])[, 1])
+results <- cbind(results,as.data.frame(as.matrix(summary(rph$pizza.2.right))[2:3, ])[, 1])
+results <- cbind(results,as.data.frame(as.matrix(summary(rph$homicide.3.right))[2:3, ])[, 1])
+
+names(results) <- c('pizza.1','homicide.2','rain.3','homicide.1','rain.2','pizza.3','rain.1','pizza.2','homicide.3')
+#Names are correct, but there are column headers with clumsy descriptions that I can't seem to get rid of
 ```
