@@ -60,4 +60,8 @@ Condition | Count
 `homicide rain pizza` | 42
 `rain pizza homicide` | 40
 
-After analysis, we found that the order of questioning was the most significant factor in the response accuracy
+After analysis, we found that the order of questioning was the most significant factor in the response accuracy.
+
+![Pizza results in position 1](../imgs/pizza_ret1.png)
+![Pizza results in position 3](../imgs/pizza_ret2.png)
+![Pizza results in position 3](../imgs/pizza_ret3.png)

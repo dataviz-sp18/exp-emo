@@ -65,7 +65,6 @@ ggplot(phr) + geom_histogram(aes(duration),binwidth = 5)
 ggsave("../imgs/duration.png")
 
 
-
 # drop people guessing randomly
 phr <- phr[phr$duration >= 12, ]
 hrp <- hrp[hrp$duration >= 12, ]
@@ -148,6 +147,7 @@ ggplot(phr) + geom_bar(aes(x=pizza.1.right,y= (..count..)/sum(..count..),fill = 
            title='Pizza Consumption when Asked First') +
        scale_fill_manual(values=reds) + 
        scale_y_continuous(limits=c(0,1))
+ggsave("../imgs/pizza_ret1.png")
 
 ggplot(phr) + geom_bar(aes(x=homicide.2.right,y= (..count..)/sum(..count..),fill = homicide.2, alpha=homicide.2)) + 
        scale_x_discrete(labels=c('Incorrect','Correct')) +
@@ -231,6 +231,7 @@ ggplot(hrp) + geom_bar(aes(x=factor(pizza.3.right),y= (..count..)/sum(..count..)
            title='Pizza Consumption when Asked Third') +
        scale_fill_manual(values=reds) + 
        scale_y_continuous(limits=c(0,1))
+ggsave("../imgs/pizza_ret3.png")
 ```
 
 
@@ -269,6 +270,7 @@ ggplot(rph) + geom_bar(aes(x=pizza.2.right,y= (..count..)/sum(..count..),fill = 
            title='Pizza Consumption when Asked Second') +
        scale_fill_manual(values=reds) + 
        scale_y_continuous(limits=c(0,1))
+ggsave("../imgs/pizza_ret2.png")
 
 ggplot(rph) + geom_bar(aes(x=factor(homicide.3.right),y= (..count..)/sum(..count..),fill = homicide.3, alpha=homicide.3)) + 
        scale_x_discrete(labels=c('Incorrect','Correct')) +
