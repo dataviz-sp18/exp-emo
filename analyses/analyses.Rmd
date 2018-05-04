@@ -61,7 +61,20 @@ ggplot(phr) + geom_histogram(aes(duration),binwidth = 5)
 ggplot(hrp) + geom_histogram(aes(duration),binwidth = 5)
 ggplot(rph) + geom_histogram(aes(duration),binwidth = 5)
 
-ggplot(phr) + geom_histogram(aes(duration),binwidth = 5)
+ggplot(phr) + geom_histogram(aes(duration),binwidth = 5,fill='deeppink',alpha=.75,color='white',size=.15) +
+              #scale_x_discrete(labels=c('Incorrect','Correct')) +
+              #scale_alpha_manual(values=c(.4,1,1)) + 
+              theme(legend.position='bottom',legend.title=element_blank(),
+                   plot.title=element_text(hjust=0.5),
+                   plot.subtitle = element_text(hjust = 0.5),
+                   #axis.title.x=element_blank(),
+                   panel.background=element_blank(),
+                   panel.grid.major.y=element_line(colour='grey50',size=.25),
+                   panel.grid.major.x=element_blank(),#element_line(colour='grey50',size=.25),
+                   axis.ticks=element_blank()) +
+              labs(y='Count of Responses',
+                   x='Duration (s)',
+                   title='Task Duration for First Wave')
 ggsave("../imgs/duration.png")
 
 
@@ -229,7 +242,7 @@ ggplot(hrp) + geom_bar(aes(x=factor(pizza.3.right),y= (..count..)/sum(..count..)
             axis.ticks=element_blank()) +
        labs(y='Proportion of Responses',
            title='Pizza Consumption when Asked Third') +
-       scale_fill_manual(values=reds) + 
+       scale_fill_manual(values=reds[-2]) + 
        scale_y_continuous(limits=c(0,1))
 ggsave("../imgs/pizza_ret3.png")
 ```
@@ -268,7 +281,7 @@ ggplot(rph) + geom_bar(aes(x=pizza.2.right,y= (..count..)/sum(..count..),fill = 
             axis.ticks=element_blank()) +
        labs(y='Proportion of Responses',
            title='Pizza Consumption when Asked Second') +
-       scale_fill_manual(values=reds) + 
+       scale_fill_manual(values=reds[-2]) + 
        scale_y_continuous(limits=c(0,1))
 ggsave("../imgs/pizza_ret2.png")
 
@@ -307,7 +320,6 @@ results <- cbind(results,as.data.frame(as.matrix(summary(rph$pizza.2.right))[2:3
 results <- cbind(results,as.data.frame(as.matrix(summary(rph$homicide.3.right))[2:3, ])[, 1])
 
 names(results) <- c('pizza.1','homicide.2','rain.3','homicide.1','rain.2','pizza.3','rain.1','pizza.2','homicide.3')
-#Names are correct, but there are column headers with clumsy descriptions that I can't seem to get rid of
 ```
 
 
@@ -320,14 +332,26 @@ results[idx] <- lapply(results[idx], function(x) as.numeric(as.character(x)))
 pizza.df <- cbind.data.frame(results$pizza.1,results$pizza.2,results$pizza.3)
 rain.df <- cbind.data.frame(results$rain.1,results$rain.2,results$rain.3)
 homicide.df <- cbind.data.frame(results$homicide.1,results$homicide.2,results$homicide.3)
+
+first.df <- cbind.data.frame(results$pizza.1,results$homicide.1,results$rain.1)
+second.df <- cbind.data.frame(results$pizza.2,results$homicide.2,results$rain.2)
+third.df <- cbind.data.frame(results$pizza.3,results$homicide.3,results$rain.3)
 ```
 
 
-```{r fisher_test}
+```{r fisher_tests_topic}
 fisher.test(pizza.df)
 fisher.test(rain.df)
 fisher.test(homicide.df)
 ```
+
+```{r fisher_tests_order}
+
+fisher.test(first.df)
+fisher.test(second.df)
+fisher.test(third.df)
+```
+
 
 ```{r percentages}
 unname(pizza.df[1,] / (pizza.df[1,] + pizza.df[2,]))
