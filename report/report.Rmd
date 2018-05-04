@@ -1,0 +1,63 @@
+---
+title: 'Data Visualization Experiment'
+author: 'Reid McIlroy-Young & Erin M. Ochoa'
+date: '2018/05/04'
+class: 'Data Visualization'
+professor: 'Dr. Soltoff'
+output: github_document
+---
+
+# Question
+
+Our question for this experiment is: "How does the framing of the data's distribution affect the reading comprehension of the visual?" More specialty if we give a map that displays data the reader has preconceived notions about, does their speed of comprehension change when compared to a more neutral dataset.
+
+# Survey
+
+To see how framing effects comprehension this we created three maps:
+![Homicide across states](../imgs/murder2.png)
+![Pizza consumption across states](../imgs/pizza2.png)
+![Rainfall across states](../imgs/rainfall2.png)
+
+Before showing the participant a map we gave them the following prompt, or one very similar:
+
+> You will be shown a map of the US displaying the annual rainfall by State, for 5 seconds. On it two States are marked (Kentucky and Virginia). After viewing please give which has a rainfall.
+
+> When you are ready to see the map please click ready
+
+Each map has two states labeled (choose to have similar size visual) and the participant was given 5 seconds to view the image (loading time of the image likely made the functional viewing time 4 seconds, but it was not measured). The images do not say which condition they are for, but the ranges given by the legends limit the possible datasets, so the green map was always used for Homicide, the red for pizza and the blue for rainfall.
+
+Then the participants were asked, or something similar:
+
+> Which state had higher rainfall?
++ Kentucky
++ Virginia
++ I am not sure
+
+This was repeated for each of the other two maps. Giving us 3 measurements per participant.
+
+After the last question participants were shown:
+
+> None of the data used in this experiment is real, please do not use the maps.
+
+> Thank you for helping us.
+
+# Experiment
+
+Four surveys we conducted, using Amazon Mechanical Turk. All limited respondents to the US. The first survey asked for 20 responses and paid $.10 a HIT. I twas used as a test and a few issues were found, the testing survey data is not used for the results. Next a survey asking about pizza, homicide then rain was conducted at $.05 a HIT with 50 responses. Rain, pizza then homicide, and homicide, rain then pizza, were run soon after at $.06 a HIT. This gives a control on order, as the results seem to be very order sensitive.
+
+
+# Results
+
+Most responses were good, with about 80% of respondents taking enough time to work thought the questions.
+
+![](../imgs/duration.png)
+
+Shows the duration of response times for the first 50 person survey. We removed all responses with times below 12. Giving us the final useful response counts of:
+
+Condition | Count
+----|-----
+`pizza homicide rain` | 40
+`homicide rain pizza` | 42
+`rain pizza homicide` | 40
+
+After analysis, we found that the order of questioning was the most significant factor in the response accuracy
